@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Browser App</title>
+    <script src="index.js"></script>
+    <script src="./GerichtAuswahl.js"></script>
+    <script type="text/javascript">
+        let pages = [
+            {
+                url: "/GerichtAuswahl",
+                resource: "/GerichtAuswahl/GerichtAuswahl.html",
+                klasse: GerichtAuswahl
+            },
+        ];
+
+        window.addEventListener("load", function () {
+            let app = new App();
+            app.run()
+        });
+    </script>
+
+    <body>
+        <section id="Gerichtsauswahl" class="hidden">
+                <div class="right">
+                    <div class="item">
+                        <a href="./GerichtAuswahl.html" data-navigo>
+                            Gericht auswählen
+                        </a>
+                    </div>
+                </div>
+        </section>
+    </body>
+</html>
