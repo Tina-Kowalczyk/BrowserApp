@@ -21,80 +21,33 @@
             app.run()
         });
     </script>
-
-<style>
-.dropbtn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #3e8e41;
-}
-
-#myInput {
-  box-sizing: border-box;
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-}
-
-#myInput:focus {outline: 3px solid #ddd;}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f6f6f6;
-  min-width: 230px;
-  overflow: auto;
-  border: 1px solid #ddd;
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown a:hover {background-color: #ddd;}
-
-.show {display: block;}
-</style>
 </head>
 <body>
+    <div class="topnav">
+        <a class="active" href="#home">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
 
-<h2>Gericht auswählen</h2>
-<p>Bitte Wählen Sie ein Gericht aus. Sollte Ihr Gericht nicht vorhanden sein, so können Sie es hinzufügen.</p>
+    <h2>Gericht auswählen</h2>
+    <p>Bitte Wählen Sie ein Gericht aus. Sollte Ihr Gericht nicht vorhanden sein, so können Sie es hinzufügen.</p>
 
-<div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Gericht auswählen</button>
-  <div id="myDropdown" class="dropdown-content">
-     <input type="text" placeholder="Gericht suchen.." id="myInput" onkeyup="filterFunction()">
-     <a id="Currywurst" onclick="changeText(this.value);">Currywurst</a>
-     <a id="Käsespätzle" onclick="changeText(this.value);">Käsespätzle</a>
-     <a id="Schnitzel" onclick="changeText(this.value);">Schnitzel</a>
-     <a id="Lasagne" onclick="changeText(this.value);">Lasagne</a>
-     <a id="SpaghettiBolognese" onclick="changeText(this.value);">Spaghetti Bolognese</a>
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Gericht auswählen</button>
+    <div id="myDropdown" class="dropdown-content">
+        <input type="text" placeholder="Gericht suchen.." id="myInput" onkeyup="filterFunction()">
+        <a id="Currywurst" onclick="changeText(this.value);">Currywurst</a>
+        <a id="Käsespätzle" onclick="changeText(this.value);">Käsespätzle</a>
+        <a id="Schnitzel" onclick="changeText(this.value);">Schnitzel</a>
+        <a id="Lasagne" onclick="changeText(this.value);">Lasagne</a>
+        <a id="SpaghettiBolognese" onclick="changeText(this.value);">Spaghetti Bolognese</a>
 <!--
     <a href="#Lasagne">Lasagne</a>
     <a href="#SpaghettiBolognese">Spaghetti Bolognese</a>
 -->
-  </div>
-</div>
+    </div>
+    </div>
 
 <div>
     <p id="myGericht">Ihr Gericht hat folgende kcal:</p>
