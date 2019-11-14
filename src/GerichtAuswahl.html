@@ -5,15 +5,16 @@
     <meta charset="utf-8" />
     <title>Browser App</title>
     <link rel="stylesheet" href="GerichtAuswahl.css">
+    <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
     <script src="./GerichtAuswahl.js"></script>
+
     <script type="text/javascript">
         let pages = [{
             url: "/GerichtAuswahl",
             resource: "/GerichtAuswahl/GerichtAuswahl.html",
             klasse: GerichtAuswahl
         }, ];
-
         window.addEventListener("load", function() {
             let app = new App();
             app.run()
@@ -50,14 +51,11 @@
 
     <script>
         function changeText(value) {
-
             var elCurrywurst = document.getElementById("Currywurst");
             var elKäsespätzle = document.getElementById("Käsespätzle");
             var elSchnitzel = document.getElementById("Schnitzel");
             var elLasagne = document.getElementById("Lasagne");
             var elSpaghettiBolognese = document.getElementById("SpaghettiBolognese");
-
-
             if (elCurrywurst.addEventListener) {
                 elCurrywurst.addEventListener("click", function() {
                     var x = document.getElementById("myGericht").innerHTML;
@@ -88,7 +86,6 @@
                     document.getElementById("demo").innerHTML = 500;
                 }, false);
             }
-
         }
     </script>
 
@@ -99,7 +96,6 @@
             var name = prompt("Wie heißt das Gericht?");
             var kcal = prompt("Wie viele Kcal hat das Gericht?");
         }
-
         /*zeigt den Content des Dropdown menüs an*/
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
@@ -172,7 +168,6 @@ window.onclick = function(event) {
         function Kcal() {
             var selectBox = document.getElementById("mySelect");
             var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
             var x = document.getElementById("mySelect").innerHTML;
             document.getElementById("show").innerHTML = selectedValue;
         }
@@ -185,14 +180,11 @@ window.onclick = function(event) {
             option.text = gericht;
             option.value = kalorien;
             x.add(option);
-
         }
-
         /* SUCHFILTER */
         (function() {
             // the IIFE lets us use a local variable store information
             var optionsCache = [];
-
             // add option values to the cache
             function optionsArray(select) {
                 var reduce = Array.prototype.reduce;
@@ -323,7 +315,6 @@ window.onclick = function(event) {
                     displayMessage("danger", `<strong>Fehler beim Sichern:</strong> ${error}`);
                 }
             }
-
             function displayMessage(type, message) {
                 console.log(type, message);
                 let divElement = document.createElement("div");
@@ -344,7 +335,6 @@ window.onclick = function(event) {
             buttonSaveChanges.addEventListener("click", saveChanges);
             reloadData();
         });
-
         function Search() {
             // Declare variables
             var input, filter, table, tr, td, i, txtValue;
@@ -352,7 +342,6 @@ window.onclick = function(event) {
             filter = input.value.toUpperCase();
             table = document.getElementById("myTable");
             tr = table.getElementsByTagName("tr");
-
             // Loop through all table rows, and hide those who don't match the search query
             for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[0];
