@@ -107,10 +107,10 @@
                     try {
                         await database.deleteGerichteById(deletedGerichte);
                         await database.saveGerichte(table.getData());
-                        displayMessage("success", "Änderungen wurden gesichert.");
+                        displayMessage("success", "Änderungen wurden gespeichert.");
                         reloadData();
                     } catch (error) {
-                        displayMessage("danger", `<strong>Fehler beim Sichern:</strong> ${error}`);
+                        displayMessage("danger", `<strong>Fehler beim speichern:</strong> ${error}`);
                     }
                 }
                 // gibt Message aus
@@ -121,9 +121,6 @@
                     divElement.setAttribute("role", "alert");
                     divElement.innerHTML = `
                         ${message}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     `;
                     document.getElementById("alerts").appendChild(divElement);
                     setTimeout(() => $(divElement).alert("close"), 5000);
@@ -164,7 +161,7 @@
     <body>
         <form id="filterParams">
             <b>Suche: </b>
-            <input type="text" class="fieldIn" id="filterInput" onkeyup="filtFunction()" placeholder="Gericht..." style="width: 165px">
+            <input type="text" class="fieldIn" id="filterInput" onkeyup="filtFunction()" placeholder="Gericht eingeben..." style="width: 165px">
             <input type="reset" class="button" id="filterClear" onclick="clearFunction()" value="Clear Filter">
         </form>
 
@@ -179,11 +176,11 @@
                 tabelle.tabulator("clearFilter");
             }
         </script>
-        <div id="tabelle" class="table-striped table-bordered"></div>
+        <div id="tabelle" class="tabelle"></div>
         <p></p>
         <div id="alerts"></div>
         <p></p>
-        <div id="toolbar">
+        <div id="buttons" style="text-align: center; border: 1px solid transparent">
             <button id="button-insert-row" class="btn-add" type="button">Neues Gericht hinzufügen</button>
             <button id="button-delete-rows" class="btn-delete" type="button">Markiertes Gericht löschen</button>
             <button id="button-discard-changes" class="btn-discard" type="button">Änderungen verwerfen</button>
