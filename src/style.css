@@ -1,11 +1,12 @@
-/* sollte von jedem referenziert werden, hier ist die navigationsleiste und header */
+/* sollte von jedem mit "<link rel="stylesheet" href="style.css">" referenziert werden,
+hier ist die Navigationsleiste und Header */
 
 .topnav {
     background-color: #333;
     overflow: hidden;
 }
 
-/* Style the links inside the navigation bar */
+/* Style der Links ind der Navigationsleiste */
 .topnav a {
     float: left;
     color: #f2f2f2;
@@ -13,6 +14,7 @@
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    font-family: arial;
 }
 
 /* Ändert, wie die Links angezeigt werden, wenn man mit der Maus darüber fährt */
@@ -24,21 +26,34 @@
     border-bottom-width: 4px;
 }
 
-/* Add a color to the active/current link */
+/* In welcher Farbe der aktuelle Link angezeigt wird */
 .topnav a.active {
     background-color: #4CAF50;
     color: white;
 }
 
-
-header h1 {
-    @@ -91, 8+87, 9 @@
+/* Style der Button */
+.btn {
+    background: #4CAF50;
+    background: linear-gradient(#4CAF50, #2d6730);
+    border: solid;	border-width: 1px; border-color: #000;
+    color: white;
+    font-weight: bold;
+    padding: 16px 20px;
+    text-align: center;
+    margin-left: 4px;
 }
 
-header p a, h2, h3 {
+/* Style von <h1></h1> */
+h1 {
     font-family: Arial, Helvetica, sans-serif font-size: 1.8em;
+    font-size: 1.5em;
     letter-spacing: -1px;
     color: #FFFFFF;
     color: #4CAF50;
     text-transform: uppercase;
     text-shadow: 1px 1px 0 #000;
+    border-width: 1px;
+    border: solid;
+    text-align: center;
+}

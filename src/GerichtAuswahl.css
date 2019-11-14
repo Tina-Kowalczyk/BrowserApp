@@ -1,36 +1,35 @@
 .tabulator {
     position: relative;
+    border-bottom: 5px solid #4CAF50;
     background-color: #fff;
-    overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
     text-align: left;
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-    transform: translatez(0)
+    overflow: hidden;
+    transform: translatez(0);
+    font-family: arial;
 }
 
 .tabulator .tabulator-header {
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    border-bottom: 2px solid #4CAF50;
-    background-color: #fff;
-    font-weight: 700;
+    border-bottom: 4px solid #4CAF50;
+    background-color: #222;
+    color: #fff;
+    font-weight: bold;
 }
 
 .tabulator .tabulator-header .tabulator-col {
     display: inline-block;
     position: relative;
     box-sizing: border-box;
-    background-color: #fff;
+    border-right: 1px solid #aaa;
+    background-color: #333;
     text-align: left;
-    vertical-align: bottom;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .tabulator .tabulator-header .tabulator-col .tabulator-col-content {
-    box-sizing: border-box;
     position: relative;
     padding: 8px
 }
@@ -42,141 +41,140 @@
     right: 8px;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid transparent;
+    border-bottom: 6px solid #bbb;
 }
 
-.tabulator .tabulator-header .tabulator-col.tabulator-sortable:hover {
-    cursor: pointer;
-    background-color: #4CAF50
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter textarea {
+    height: auto !important;
 }
 
-.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=none] .tabulator-col-content .tabulator-arrow {
-    border-top: none;
-    border-bottom: 6px solid #4CAF50
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter svg {
+    margin-top: 3px;
 }
 
-.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=asc] .tabulator-col-content .tabulator-arrow {
-    border-top: none;
-    border-bottom: 6px solid #4CAF50
-}
-
-.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort=desc] .tabulator-col-content .tabulator-arrow {
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort="none"] .tabulator-col-content .tabulator-arrow {
+    border-bottom: none;
     border-top: 6px solid #4CAF50;
-    border-bottom: none
+    /* the arrow colour */
 }
 
-.tabulator .tabulator-header .tabulator-col.tabulator-sortable .tabulator-col-content .tabulator-arrow:hover {
-    border-top: 6px solid #666;
-    border-bottom: none
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort="asc"] .tabulator-col-content .tabulator-arrow {
+    border-top: none;
+    border-bottom: 6px solid #4CAF50;
+    /* the arrow colour */
 }
 
-.tabulator .tabulator-header .tabulator-calcs-holder {
-    box-sizing: border-box;
-    width: 100%;
-    background: #fff !important;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    overflow: hidden
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort="desc"] .tabulator-col-content .tabulator-arrow {
+    border-bottom: none;
+    border-top: 6px solid #4CAF50;
+    /* the arrow colour */
 }
 
-.tabulator .tabulator-header .tabulator-calcs-holder .tabulator-row {
-    background: #fff !important
-}
-
-.tabulator.table-striped .tabulator-row:nth-child(odd) {
-    background-color: #f4f4f4
-}
-
-.tabulator.table-bordered {
-    border: 1px solid #4CAF50
-}
-
-.tabulator.table-bordered .tabulator-header .tabulator-col, .tabulator.table-bordered .tabulator-tableHolder .tabulator-table .tabulator-row .tabulator-cell {
-    border-right: 1px solid #4CAF50
-}
-
-.tabulator-row {
+.tabulator .tabulator-row {
     position: relative;
     box-sizing: border-box;
-    min-height: 30px;
+    min-height: 22px;
     background-color: #fff;
-    border-bottom: 1px solid #ddd
 }
 
-.tabulator-row.tabulator-selectable:hover {
-    background-color: #4CAF50 !important;
-    cursor: pointer
+.tabulator .tabulator-row.tabulator-row-even {
+    background-color: #EFEFEF;
 }
 
-.tabulator-row .tabulator-cell {
+.tabulator .tabulator-row.tabulator-selectable:hover {
+    background-color: #bbb;
+    cursor: pointer;
+}
+
+.tabulator .tabulator-row.tabulator-selected {
+    background-color: #4CAF50;
+}
+
+.tabulator .tabulator-row.tabulator-selected:hover {
+    background-color: ##4CAF50;
+    cursor: pointer;
+}
+
+.tabulator .tabulator-row .tabulator-cell {
     display: inline-block;
     position: relative;
     box-sizing: border-box;
-    padding: 8px;
+    padding: 6px;
+    border-right: 1px solid #aaa;
     vertical-align: middle;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
 }
 
-.tabulator-row .tabulator-cell.tabulator-editing {
+.tabulator .tabulator-row .tabulator-cell.tabulator-editing {
     border: 1px solid #4CAF50;
-    padding: 0
+    padding: 0;
 }
 
-.tabulator-row .tabulator-cell.tabulator-editing input, .tabulator-row .tabulator-cell.tabulator-editing select {
+.tabulator .tabulator-row .tabulator-cell.tabulator-editing input, .tabulator .tabulator-row .tabulator-cell.tabulator-editing select {
     border: 1px;
-    background: transparent
+    background: transparent;
+}
+
+/* Umrandung des Suchfelds (Filter) */
+.fieldIn {
+    border: solid;
+    border-width: 2px;
+    border-color: #4CAF50;
+    margin: 6px 12px 6px 1px;
 }
 
 .btn-add {
-    background-color: #4CAF50;
+    background: #4CAF50;
+    background: linear-gradient(#4CAF50, #2d6730);
+    /* das grün von überall und ein etwas dunkleres für den Farbverlauf */
+    border: solid;
+    border-width: 1px;
+    border-color: #000;
     color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-delete {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-discard {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+    font-weight: bold;
+    padding: 12px 16px;
+    /* total height is 8+8+1+1+14=32*/
+    text-align: center;
+    margin-left: 4px;
 }
 
 .btn-save {
-    background-color: #4CAF50;
+    background: #4CAF50;
+    background: linear-gradient(#4CAF50, #2d6730);
+    border: solid;
+    border-width: 1px;
+    border-color: #000;
     color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-align: center;
+    margin-left: 4px;
 }
 
-.btn-add:hover, .btn-add:focus {
-    background-color: #3e8e41;
+.btn-discard {
+    background: #4CAF50;
+    background: linear-gradient(#4CAF50, #2d6730);
+    border: solid;
+    border-width: 1px;
+    border-color: #000;
+    color: white;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-align: center;
+    margin-left: 4px;
 }
 
-.btn-delete:hover, .btn-delete:focus {
-    background-color: #3e8e41;
-}
-
-.btn-discard:hover, .btn-discard:focus {
-    background-color: #3e8e41;
-}
-
-.btn-save:hover, .btn-save:focus {
-    background-color: #3e8e41;
+.btn-delete {
+    background: #4CAF50;
+    background: linear-gradient(#4CAF50, #2d6730);
+    border: solid;
+    border-width: 1px;
+    border-color: #000;
+    color: white;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-align: center;
+    margin-left: 4px;
 }
