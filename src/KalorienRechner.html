@@ -3,11 +3,16 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <link rel="stylesheet" href="Kalorienrechner.css" />
+        <link rel="stylesheet" href="GerichtAuswahl.css" />
         <script src="KalorienRechner.js"></script>
     </head>
     <body>
-    <h1>Tagesbedarfsrechner</h1>
+        <div class="topnav">
+            <a href="index.html">Bilanz</a>
+            <a href="GerichtAuswahl.html">Gericht eintragen</a>
+            <a class="active" href="KalorienRechner">Täglicher Kalorienbedarf</a>
+        </div>
+    <h2>Tagesbedarfsrechner</h2>
 
     <p>Mit diesem Online-Rechner können Sie ihren Tagesbedarf an Kalorien berechnen.</p>
 
@@ -35,9 +40,9 @@
     <input type="radio" id="geschlecht" value="männlich">Männlich <br>
     <input type="radio" id="geschlecht" value="weiblich">Weiblich <br>
 
-    <div class="aktivitaetsDropdown">
-  <button onclick="myFunction()" id="aktivButton" class="aktivDropbtn">Aktivitätslevel auswählen</button>
-  <div id="myDropdown" class="dropdown-content">
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Aktivitätslevel auswählen</button>
+  <div id="aktivButton" class="dropdown-content">
     <a id="wenig" onclick="myAktivFunction(this.innerHTML)" >wenig aktiv</a>
     <a id="leicht" onclick="myAktivFunction(this.innerHTML)" >leicht aktiv</a>
     <a id="moderat" onclick="myAktivFunction(this.innerHTML)" >moderat aktiv</a>
@@ -47,6 +52,8 @@
 </div>
 
     <input type="button" onclick="berechnen()" id="berechnen" name="berechnen" value="Berechnen" required />
+
+        <p id="ergebnis"</p>
 
     <p>
         wenig aktiv	kein oder wenig Training, überwiegend sitzende Tätigkeit<br>

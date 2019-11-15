@@ -1,7 +1,7 @@
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+  document.getElementById("myAktivDropdown").classList.toggle("show");
 }
 
 // Close the dropdown menu if the user clicks outside of it
@@ -36,5 +36,23 @@ function berechnen(){
         geschlecht=-161;
     }
 
+    switch (aktivitaet) {
+    case "wenig aktiv":
+      aktivitaet = 1,2;
+      break;
+    case "leicht aktiv":
+      aktivitaet = 1,375;
+      break;
+  case "moderat aktiv":
+    aktivitaet = 1,55;
+    break;
+  case "sehr aktiv":
+    aktivitaet=1,725;
+    break;
+  case "extrem aktiv":
+    aktivitaet=1,9
+}
     let ergebnis= ((10 * gewicht) + (6.25 * groesse) - (5 * alter) + geschlecht) * aktivitaet;
+
+
 }
