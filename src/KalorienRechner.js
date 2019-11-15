@@ -53,6 +53,6 @@ function berechnen(){
     aktivitaet=1,9
 }
     let ergebnis= ((10 * gewicht) + (6.25 * groesse) - (5 * alter) + geschlecht) * aktivitaet;
-
+    document.getElementById("ergebnis").innerHTML="Dein täglicher Kalorienbedarf beträgt "+ergebnis+" kcal";
 
 }

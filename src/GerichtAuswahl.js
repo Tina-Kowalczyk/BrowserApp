@@ -2,19 +2,18 @@
 
 import stylesheet from "./GerichtAuswahl.css";
 
-    class GerichtAuswahl {
-        /**
-         * Konstruktor.
-         */
-        constructor() {
-        }
+class GerichtAuswahl {
+    /**
+     * Konstruktor.
+     */
+    constructor() {}
+    /**
+     * Ab hier beginnt die Anwendung zu laufen.
+     */
+    start() {
+        console.log("Die Klasse App sagt Hallo!");
 
-        /**
-         * Ab hier beginnt die Anwendung zu laufen.
-         */
-        start() {
-            console.log("Die Klasse App sagt Hallo!");
-
-            object.addEventListener("click", myScript);
-        }
+        object.addEventListener("click", myScript);
     }
+
+}

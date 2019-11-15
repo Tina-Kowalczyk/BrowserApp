@@ -5,248 +5,205 @@
     <meta charset="utf-8" />
     <title>Browser App</title>
     <link rel="stylesheet" href="GerichtAuswahl.css">
-    <script src="index.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="database.js"></script>
     <script src="./GerichtAuswahl.js"></script>
-    <script type="text/javascript">
-        let pages = [
-            {
-                url: "/GerichtAuswahl",
-                resource: "/GerichtAuswahl/GerichtAuswahl.html",
-                klasse: GerichtAuswahl
-            },
-        ];
 
-        window.addEventListener("load", function () {
+    <script type="text/javascript">
+        let pages = [{
+            url: "/GerichtAuswahl",
+            resource: "/GerichtAuswahl/GerichtAuswahl.html",
+            klasse: GerichtAuswahl
+        }, ];
+        window.addEventListener("load", function() {
             let app = new App();
             app.run()
         });
     </script>
 </head>
+
 <body>
     <div class="topnav">
+<<<<<<< HEAD
         <a href="index.html">Bilanz</a>
         <a class="active" href="GerichtAuswahl.html">Gericht eintragen</a>
         <a href="KalorienRechner.html">Täglicher Kalorienbedarf</a>
+=======
+        <a href="#home">Bilanz</a>
+        <a class="active" href="#food">Gericht eintragen</a>
+        <a href="#calories">Täglicher Kalorienbedarf</a>
+>>>>>>> 05b5462bc5c84204b9ae8699f6857c2d07fa709a
     </div>
 
-    <h2>Gericht auswählen</h2>
+    <h1>Gericht auswählen</h1>
     <p>Bitte Wählen Sie ein Gericht aus. Sollte Ihr Gericht nicht vorhanden sein, so können Sie es hinzufügen.</p>
 
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Gericht auswählen</button>
-    <div id="myDropdown" class="dropdown-content">
-        <input type="text" placeholder="Gericht suchen.." id="myInput" onkeyup="filterFunction()">
-        <a id="Currywurst" onclick="changeText(this.value);">Currywurst</a>
-        <a id="Käsespätzle" onclick="changeText(this.value);">Käsespätzle</a>
-        <a id="Schnitzel" onclick="changeText(this.value);">Schnitzel</a>
-        <a id="Lasagne" onclick="changeText(this.value);">Lasagne</a>
-        <a id="SpaghettiBolognese" onclick="changeText(this.value);">Spaghetti Bolognese</a>
-<!--
-    <a href="#Lasagne">Lasagne</a>
-    <a href="#SpaghettiBolognese">Spaghetti Bolognese</a>
--->
-    </div>
-    </div>
+    <html>
 
-<div>
-    <p id="myGericht">Ihr Gericht hat folgende kcal:</p>
-    <p id="demo"></p>
-</div>
+    <head>
+        <title>BrowserApp</title>
+        <meta charset="utf-8" />
 
-<script>
-function changeText(value) {
+        <script src="database.js"></script>
 
-    var elCurrywurst = document.getElementById("Currywurst");
-    var elKäsespätzle = document.getElementById("Käsespätzle");
-    var elSchnitzel = document.getElementById("Schnitzel");
-    var elLasagne = document.getElementById("Lasagne");
-    var elSpaghettiBolognese = document.getElementById("SpaghettiBolognese");
+        <!-- Google Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-firestore.js"></script>
+
+        <!-- Tabulator Tabelle -->
+        <link rel="stylesheet" href="GerichtAuswahl.css">
+        <script src="https://unpkg.com/tabulator-tables@4.4.3/dist/js/tabulator.min.js"></script>
+
+        <script>
+            window.addEventListener("load", async () => {
+                let buttonInsertRow = document.getElementById("button-insert-row");
+                let buttonDeleteRows = document.getElementById("button-delete-rows");
+                let buttonDiscardChanges = document.getElementById("button-discard-changes");
+                let buttonSaveChanges = document.getElementById("button-save-changes");
+                let table = new Tabulator("#tabelle", {
+                    layout: "fitColumns",
+                    columns: [
+                        // Markierspalte
+                        {
+                            formatter: "rowSelection",
+                            titleFormatter: "rowSelection",
+                            headerSort: false,
+                            width: 20
+                        },
+                        // Datenspalten
+                        {
+                            title: "Gericht",
+                            field: "gericht",
+                            editor: "input"
+                        },
+                        {
+                            title: "Kcal",
+                            field: "kcal",
+                            editor: "input"
+                        },
+                    ],
+                });
+                let database = new Database();
+                await database.createDemoData();
+                let deletedGerichte = [];
+                async function insertRow() {
+                    table.addData([{
+                        gericht: "",
+                        kcal: "",
+                    }]);
+                }
+                async function deleteRows() {
+                    let gerichte = table.getSelectedData();
+                    let rows = table.getSelectedRows();
+                    gerichte.forEach(gericht => {
+                        deletedGerichte.push(gericht.gericht);
+                    });
+                    rows.forEach(row => {
+                        row.delete();
+                    });
+                }
+                // lädt Daten
+                async function reloadData() {
+                    deletedGerichte = [];
+                    let gerichte = await database.selectAllGerichte();
+                    table.replaceData(gerichte);
+                }
+                // speichert Daten
+                async function saveChanges() {
+                    try {
+                        await database.deleteGerichteById(deletedGerichte);
+                        await database.saveGerichte(table.getData());
+                        displayMessage("success", "Änderungen wurden gespeichert.");
+                        reloadData();
+                    } catch (error) {
+                        displayMessage("danger", `<strong>Fehler beim speichern:</strong> ${error}`);
+                    }
+                }
+                // gibt Message aus
+                function displayMessage(type, message) {
+                    console.log(type, message);
+                    let divElement = document.createElement("div");
+                    divElement.className = `alert alert-${type} alert-dismissible fade show`;
+                    divElement.setAttribute("role", "alert");
+                    divElement.innerHTML = `
+                        ${message}
+                    `;
+                    document.getElementById("alerts").appendChild(divElement);
+                    setTimeout(() => $(divElement).alert("close"), 5000);
+                }
+                // die dazugehörigen Button
+                buttonInsertRow.addEventListener("click", insertRow);
+                buttonDeleteRows.addEventListener("click", deleteRows);
+                buttonDiscardChanges.addEventListener("click", reloadData);
+                buttonSaveChanges.addEventListener("click", saveChanges);
+                reloadData();
+            });
 
 
-    if (elCurrywurst.addEventListener) {
-        elCurrywurst.addEventListener("click", function() {
-            var x = document.getElementById("myGericht").innerHTML;
-            document.getElementById("demo").innerHTML = 100;
-        }, false);
-    }
+            // Ermöglicht das Durchsuchen der Tabelle nach Gerichten
+            function Search() {
+                // Declare variables
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("Search");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("table");
+                tr = table.getElementsByTagName("tr");
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
+    </head>
 
-    /*document.getElementById("Currywurst").outerHTML =
-    "Ihr Gericht hat folgende Kcal: " + "800kcal";*/
+    <body>
+        <form id="filterParams">
+            <b>Suche: </b>
+            <input type="text" class="fieldIn" id="filterInput" onkeyup="filtFunction()" placeholder="Gericht eingeben..." style="width: 165px">
+            <input type="reset" class="button" id="filterClear" onclick="clearFunction()" value="Clear Filter">
+        </form>
 
-    if (elKäsespätzle.addEventListener) {
-        elKäsespätzle.addEventListener("click", function() {
-            var x = document.getElementById("myGericht").innerHTML;
-            document.getElementById("demo").innerHTML = 200;
-        }, false);
-    }
-    if (elSchnitzel.addEventListener) {
-        elSchnitzel.addEventListener("click", function() {
-            var x = document.getElementById("myGericht").innerHTML;
-            document.getElementById("demo").innerHTML = 300;
-        }, false);
-    }
-    if (elLasagne.addEventListener) {
-        elLasagne.addEventListener("click", function() {
-            var x = document.getElementById("myGericht").innerHTML;
-            document.getElementById("demo").innerHTML = 400;
-        }, false);
-    }
-    if (elSpaghettiBolognese.addEventListener) {
-        elSpaghettiBolognese.addEventListener("click", function() {
-            var x = document.getElementById("myGericht").innerHTML;
-            document.getElementById("demo").innerHTML = 500;
-        }, false);
-    }
+        <script>
+            //Filter Based on Field and Value Entered
+            function filtFunction() {
+                tabelle.tabulator("setFilter", fieldSelect.value, "like", filterInput.value); //update Table
+            }
 
-}
-</script>
-
- <button onclick="newGericht()" class="newGericht">Gericht erstellen</button>
-
-<script>
-function newGericht() {
-    var name = prompt("Wie heißt das Gericht?");
-    var kcal = prompt("Wie viele Kcal hat das Gericht?");
-}
-
-/*zeigt den Content des Dropdown menüs an*/
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-</script>
-<!-- sorgt dafür, dass das Dropdown menü geschlossen wird, wenn man außerhalb klickt
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-  }
-  }
-}
--->
-<script>
-
-function filterFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  div = document.getElementById("myDropdown");
-  a = div.getElementsByTagName("a");
-  for (i = 0; i < a.length; i++) {
-    txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
-}
-</script>
+            //Clear the filters and display original table
+            function clearFunction() {
+                tabelle.tabulator("clearFilter");
+            }
+        </script>
+        <div id="tabelle" class="tabelle"></div>
+        <p></p>
+        <div id="alerts"></div>
+        <p></p>
+        <div id="buttons" style="text-align: center; border: 1px solid transparent">
+            <button id="button-insert-row" class="btn-add" type="button">Neues Gericht hinzufügen</button>
+            <button id="button-delete-rows" class="btn-delete" type="button">Markiertes Gericht löschen</button>
+            <button id="button-discard-changes" class="btn-discard" type="button">Änderungen verwerfen</button>
+            <button id="button-save-changes" class="btn-save" type="button">Änderungen sichern</button>
+        </div>
 
         <section id="index" class="hidden">
-                <div class="right">
-                    <div class="item">
-                        <a href="./index.html" data-navigo>
-                            Zurück zur Startseite
-                        </a>
-                    </div>
+            <div class="right">
+                <div class="item">
+                    <p></p>
+                    <p></p>
+                    <a href="./index.html" data-navigo>
+                        Zurück zur Startseite
+                    </a>
                 </div>
+            </div>
         </section>
-</html>
+    </body>
 
-<form>
-    <p>Gericht Suchen: <input id="filter"></p>
-  <select id="mySelect" size="8" onchange="Kcal();">
-    <option id=1 value="10">Apfel</option>
-    <option id=2 value="20">Banane</option>
-    <option id=3 value="30">Erdbeere</option>
-    <option id=4 value="40">Orange</option>
-  </select>
-</form>
-<br>
-
-<div>
-    <p id="meingericht">Ihr Gericht hat folgende kcal:</p>
-    <p id="show"></p>
-</div>
-
-<p>Klicken Sie auf den Button um ein neues Gericht hinzuzufügen.</p>
-
-<button type="button" onclick="myFunctionZwei()">Gericht hinzufügen</button>
-
-<script>
-
-function Kcal() {
-   var selectBox = document.getElementById("mySelect");
-   var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-   var x = document.getElementById("mySelect").innerHTML;
-   document.getElementById("show").innerHTML = selectedValue;
-  }
-/* fügt dem dropdown eine option hinzu */
-function myFunctionZwei() {
-  var x = document.getElementById("mySelect");
-  var option = document.createElement("option");
-  var gericht = prompt("Wie heißt das Gericht?");
-  var kalorien = prompt("Wie viel Kcal hat das Gericht?");
-  option.text = gericht;
-  option.value = kalorien;
-  x.add(option);
-
-}
-
-/* SUCHFILTER */
-(function () {
-    // the IIFE lets us use a local variable store information
-    var optionsCache = [];
-
-    // add option values to the cache
-    function optionsArray(select) {
-        var reduce = Array.prototype.reduce;
-        return reduce.call(select.options, function addToCache(options, option) {
-            options.push(option);
-            return options;
-        }, []);
-    }
-    // give a list of options matching the filter value
-    function filterOptions(filterValue, optionsCache) {
-        return optionsCache.reduce(function filterCache(options, option) {
-            var optionText = option.textContent;
-            if (option.text.toLowerCase().match(filterValue.toLowerCase())) {
-                options.push(option);
-            }
-            return options;
-        }, []);
-    }
-    // replace the current options with the new options
-    function replaceOptions(select, options) {
-        while (select.options.length > 0) {
-            select.remove(0);
-        }
-        options.forEach(function addOption(option) {
-            select.add(option);
-        });
-    }
-    // cache the options (if need be), and filter the options
-    function filterOptionsHandler(evt) {
-        var filterField = evt.target;
-        var targetSelect = document.getElementById("mySelect");
-        if (optionsCache.length < 1) {
-            optionsCache = optionsArray(targetSelect);
-        }
-        var options = filterOptions(filterField.value, optionsCache);
-        replaceOptions(targetSelect, options);
-    }
-    // attach filter event to trigger on keyup
-    var filter = document.getElementById("filter");
-    filter.addEventListener("keyup", filterOptionsHandler, false);
-}());
-
-</script>
-
-</body>
-</html>
+    </html>
