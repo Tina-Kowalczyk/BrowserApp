@@ -1,7 +1,42 @@
+import stylesheet from "./KalorienRechner.css";
+import App from "./app.js";
+import Database from "./database.js";
+
+let _app="";
+let _db ="";
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
+class KalorienbedarfPage {
+    constructor(app){
+        this._app = _app;
+        _app = this._app;
+        _db = app._db;
+
+    }
+
+    onShow(){
+        console.log(document.querySelector("#section_KalorienRechner"));
+        let section = document.querySelector("#section_KalorienRechner").cloneNode(true);
+
+        return {
+            className: "section_KalorienRechner",
+            main: section.querySelectorAll("section > *"),
+        };
+    };
+    onLoad(){
+      //EventListener von Suchen-Button
+      //document.getElementById("button_filter").addEventListener("click", suchen);
+
+      //EventListener für Filter-Felder
+      //document.getElementById("filter_gericht").addEventListener("keyup", keyType);
+      //document.getElementById("filter_kalorien").addEventListener("keyup", keyType);
+  }
+  onLeave(goon){
+    return true;
+}
+}
 function myFunction() {
-  document.getElementById("myAktivDropdown").classList.toggle("show");
+  document.getElementById("myDropdown").classList.toggle("show");
 }
 
 // Close the dropdown menu if the user clicks outside of it
@@ -36,23 +71,7 @@ function berechnen(){
         geschlecht=-161;
     }
 
-    switch (aktivitaet) {
-    case "wenig aktiv":
-      aktivitaet = 1,2;
-      break;
-    case "leicht aktiv":
-      aktivitaet = 1,375;
-      break;
-  case "moderat aktiv":
-    aktivitaet = 1,55;
-    break;
-  case "sehr aktiv":
-    aktivitaet=1,725;
-    break;
-  case "extrem aktiv":
-    aktivitaet=1,9
-}
     let ergebnis= ((10 * gewicht) + (6.25 * groesse) - (5 * alter) + geschlecht) * aktivitaet;
-    document.getElementById("ergebnis").innerHTML="Dein täglicher Kalorienbedarf beträgt "+ergebnis+" kcal";
-
 }
+
+export default KalorienbedarfPage;
