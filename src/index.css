@@ -1,75 +1,46 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+/*Handy*/
+body{
+    padding: 0;
+    margin: 1.5vw;
+    margin-top: 5em;
+}
 
-html, body {
+html{
     padding: 0;
     margin: 0;
-    height: 100%;
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-size: 3vw;
+    color: black;
+    background-color: #fff;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 11pt;
-    line-height: 1.6;
-    color: var(--font-color);
-}
-
-@media screen and (min-width: 768px) {
-
-    body,
-    input {
-        font-size: 12pt;
-    }
-}
-
-@media screen and (min-width: 992px) {
-
-    body,
-    input {
-        font-size: 13pt;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-
-    body,
-    input {
-        font-size: 14pt;
-    }
-}
-
-/*
- * Flächendeckender Seitenhintergrund auf großen Bildschirmen
- */
-@media (min-width: 85em) {
-
-    /* Hintergrundbild hinter dem Hauptbereich der App */
-    html {
-        /* https://pixabay.com/de/computer-notebook-kaffee-820281/ */
-        background-image: url(background.jpg);
-        background-attachment: fixed;
-        background-size: cover;
-        background-position: center;
+/*Tablets*/
+@media(min-width:700px){
+    html{
+        font-size: 2vw;
     }
 
-    /* Hauptbereich der App vergrößern */
-    body {
-        display: flex;
-        align-items: stretch;
-        justify-content: center;
+    body{
+        margin: 1vw;
+        margin-top: 3em;
     }
 
-    body>* {
-        flex: 1;
+}
+
+/*Laptop*/
+@media(min-width:1200px){
+    html{
+        font-size: 1vw;
+    }
+
+    body{
+        margin: 1em;
+        margin-top: 2em;
     }
 }
-
-/*
- * Häufig benötigte Hilfsklassen
- */
-.hidden {
-    display: none;
-}
-
-.padding {
-    padding: 0.5rem;
+#filterParams {
+	font: 14px arial;
+	background-color: #EFEFEF;
+	margin-bottom: 12px;
+	padding-left: 6px;
 }
