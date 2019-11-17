@@ -20,6 +20,7 @@
         </header>
         <main>
             <section id="section_Gerichte">
+                <h1>Gerichte</h1>
                 <!--Filterleiste-->
                 <div id="Filter">
                     <form id="filterParams">
@@ -27,25 +28,18 @@
                         Filter:
                     </a>
                     <!--Textfelder -> Filter-->
-                    <input type="text" placeholder="Nachname" id="filter_nachname" class="textfeld_filter" />
-                    <input type="text" placeholder="Vorname" id="filter_vorname" class="textfeld_filter"/>
+                    <input type="text" placeholder="Gericht" id="filter_gericht" class="textfeld_filter" />
+                    <input type="text" placeholder="Kalorien" id="filter_kalorien" class="textfeld_filter"/>
 
                     <!--Such-Button -> Filter-->
                     <button type="button" class="buttonFilter" id="button_filter">Suchen</button>
                     </form>
                 </div>
 
-                <!--Neuen Studiengang hinzufügen-->
+                <!--Neues Gericht hinzufügen-->
                 <div id="hinzufügen">
                     <h2>Bitte geben Sie die Daten des neuen Gerichts ein!</h2>
                     <br>
-
-                    <!--Studiengänge mit Vorschlägen-->
-                    <input type="text" placeholder="Gericht" id="EingabeGerichtname" list="Gerichtname" class="textfeld_phase" required="">
-
-                    <!--Jahrgang mit Vorschlägen-->
-                    <input type="number" placeholder="Kalorien" id="EingabeKalorien" class="textfeld_phase" required="" >
-                    <button type="button" id="GerichtHinzufuegen">Gericht hinzufügen</button>
 
                 </div>
                 <div>
@@ -65,7 +59,7 @@
 
                     <p>Mit diesem Online-Rechner können Sie ihren Tagesbedarf an Kalorien berechnen.</p>
 
-
+                    <form id="filterParams" align=center>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required minlength="1" size="10">
                         <br>
@@ -86,8 +80,9 @@
 
                     <input type="radio" name="geschlecht" id="männlich"  value="männlich">Männlich <br>
                     <input type="radio" name="geschlecht" id="weiblich" value="weiblich">Weiblich <br>
+                    </form>
 
-
+                    <form align=center>
 
                     <div class="dropdown">
                     <button id="aktivDrop" onclick="myFunction()" class="dropbtn">Aktivitätslevel auswählen</button>
@@ -101,9 +96,9 @@
                     </div>
 
                     <input type="button" onclick="berechnen()" id="berechnen" name="berechnen" value="Berechnen" />
+                    </form>
 
                     <p id="ergebnis"></p>
-
                     <p>
                     wenig aktiv	kein oder wenig Training, überwiegend sitzende Tätigkeit<br>
                     leicht aktiv	leichtes Training / Sport an 1-3 Tagen pro Woche<br>

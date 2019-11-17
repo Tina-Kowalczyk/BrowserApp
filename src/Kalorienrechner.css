@@ -71,3 +71,9 @@ h1 {
     border: solid;
     text-align: center;
 }
+.fieldIn {
+    border: solid;
+    border-width: 2px;
+    border-color: #4CAF50;
+    margin: 6px 12px 6px 1px;
+}

@@ -62,19 +62,19 @@ function suchen (){
     if(gericht=="" && kcal==""){
         anzeigen();
     } else {
-        //Aufrufen aller Studenten rückwärts
+        //Aufrufen aller Gerichte rückwärts
         _db.selectAllGerichteByOrderBackwards("Gericht").then(function (querySnapshot) {
-            //jeden Studenten überprüfen
+            //jedes Gericht überprüfen
             querySnapshot.forEach(function(doc){
-                //wenn einer der Filter im Studenten beinhaltet wird, wird dieser der Tabelle hinzugefügt
+                //wenn einer der Filter im Gericht beinhaltet wird, wird dieser der Tabelle hinzugefügt
 
-                //Flag, der anzeigt, ob ein Filter auf den Studenten zutrifft
+                //Flag, der anzeigt, ob ein Filter auf das Gericht zutrifft
                 let gerichtflag = false;
                 let kalorienflag = false;
 
                 //Überprüfen, ob etwas in den Feldern steht
                 if(gericht!==""){
-                    //überprüfen, ob das, was im Feld steht, im Studenten vorhanden ist
+                    //überprüfen, ob das, was im Feld steht, im Gericht vorhanden ist
                     //zu Verbesserung der Suche werden die Strings in Kleinbuchstaben verwandelt
                     //Der Vorgang wird in allen folgenden if-Schleifen wiederholt
                     if(doc.data().Gericht.toLowerCase().indexOf(gericht)>=0){
@@ -93,13 +93,13 @@ function suchen (){
                 }
 
 
-                //Wenn mindestens eine der Bedingungen zutrifft, wird der Student der Tabelle hinzugefügt
+                //Wenn mindestens eine der Bedingungen zutrifft, wird das Gericht der Tabelle hinzugefügt
                 if(gerichtflag && kalorienflag){
                     //Speichern der Daten in Variablen
                     let gericht = doc.data().Gericht;
                     let kalorien = doc.data().Kalorien;
 
-                    //Hinzufügen des Studenten mit den Variablen
+                    //Hinzufügen des Gerichts mit den Variablen
                     einfügen(gericht, kalorien);
                 }
             });
@@ -107,9 +107,9 @@ function suchen (){
     }
 }
 
-    //Übergebenen Student der Tabelle an erster Stelle hinzufügen
+    //Übergebenenes Gericht der Tabelle an erster Stelle hinzufügen
 function einfügen (gericht, kcal){
-    //Einfügen des Studenten
+    //Einfügen des Gerichts
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(2);
 

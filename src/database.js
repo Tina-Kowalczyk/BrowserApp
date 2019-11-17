@@ -44,12 +44,12 @@ class Database {
         }
     }
 
-    //Aufrufen aller vorhandenen Studenten
+    //Aufrufen aller vorhandenen Gerichte
     selectAllGerichte(){
         return this._db.collection("gerichte").get();
     }
 
-    //Aufrufen aller Studenten, sortiert nach dem übergebenen Kriterium (z.B. Name, Vorname, etc)
+    //Aufrufen aller Gerichte, sortiert nach dem übergebenen Kriterium (z.B. Name, Vorname, etc)
     selectAllGerichteByOrder(order){
         return this._db.collection("gerichte").orderBy(order).get();
     }
@@ -58,33 +58,26 @@ class Database {
         return this._db.collection("gerichte").orderBy(order, "desc").get();
     }
 
-    //Gibt einen Student anhand seiner ID zurück
+    //Gibt einen Gericht anhand seiner ID zurück
     //Die ID ist dabei die Mitarbeiter-ID
     selectGerichtById(id){
         return this._gerichte.doc(id).get();
     }
 
-    /*Speichern eines Studenten
+    /*Speichern eines Gerichts
     Der Aufbau sollte wie folgt aussehen:
-    "Name" : "Nachname",
-    "Vorname": "Vorname",
-    "Jahrgang": "2018",
-    "Semester": "3.",
-    "Hochschule": "DHBW",
-    "Studiengang": "Wirtschaftsinformatik",
-    "Geburtstag": "17.08.1997",
-    "id": "375925",
-    "Notizen": "Notizen als String"*/
+    "Name" : "Gericht",
+    "Vorname": "Kalorien"*/
     saveGericht(gericht){
         this._gerichte.doc(gericht.id).set(gericht);
     }
 
-    //Student löschen, anhand der Mitarbeiter-Id
+    //Gericht löschen, anhand der Id
     deleteGerichtById(id){
         return this._gerichte.doc(id).delete();
     }
 
-    //Speichern mehrerer Studenten
+    //Speichern mehrerer Gerichte
     saveGerichte(gerichte) {
         console.log("gerichte");
         let batch = this._db.batch();
@@ -97,7 +90,7 @@ class Database {
         return batch.commit();
     }
 
-    //löschen mehrerer Studenten anhand der Mitarbeiter-Id
+    //löschen mehrerer Gerichte anhand der Mitarbeiter-Id
     deleteGerichteById(ids){
         let batch = this._db.batch();
 
