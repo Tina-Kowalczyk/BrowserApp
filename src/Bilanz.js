@@ -1,3 +1,4 @@
+import stylesheet from "./bilanz.css";
 import App from "./app.js";
 import Database from "./database.js";
 import KalorienRechner from "./KalorienRechner.js";
