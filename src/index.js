@@ -6,7 +6,7 @@ import App from "./app.js";
 import Database from "./database.js";
 
 //Wenn DOM ist bereit
-window.addEventListener("load", ()=>{
+window.addEventListener("load", () => {
     //starte Anwendung
     console.log("load");
     let app = new App();

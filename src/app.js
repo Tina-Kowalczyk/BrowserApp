@@ -10,7 +10,7 @@ import KalorienbedarfPage from "./KalorienRechner.js";
 import Bilanz from "./Bilanz.js";
 
 class App {
-    constructor(){
+    constructor() {
         this._title = "Studentenübersicht";
         this._currentView = null;
 
@@ -21,16 +21,16 @@ class App {
         this._db.createDemoData();
 
         this._router.on({
-            "/":            () => this.showGerichtePage(),
-            "/Home":        () => this.showGerichtePage(),
-            "/Gerichte":    () => this.showGerichtePage(),
-            "/Bilanz":      () => this.showBilanzPage(),
-            "/Kalorienbedarf":   () => this.showKalorienbedarfPage(),
+            "/": () => this.showGerichtePage(),
+            "/Home": () => this.showGerichtePage(),
+            "/Gerichte": () => this.showGerichtePage(),
+            "/Bilanz": () => this.showBilanzPage(),
+            "/Kalorienbedarf": () => this.showKalorienbedarfPage(),
         });
 
         this._router.hooks({
             after: (params) => {
-                if(!this._navAborted) {
+                if (!this._navAborted) {
                     this._currentUrl = this._router.lastRouteResolved().url;
                 } else {
                     this._router.pause(true);
@@ -47,17 +47,17 @@ class App {
         this._router.resolve();
     }
 
-    showGerichtePage(){
+    showGerichtePage() {
         let view = new Gerichte(this);
         this._switchVisibleView(view);
     }
 
-    showBilanzPage(){
+    showBilanzPage() {
         let view = new Bilanz(this);
         this._switchVisibleView(view);
     }
 
-    showKalorienbedarfPage(){
+    showKalorienbedarfPage() {
         let view = new KalorienbedarfPage(this);
         this._switchVisibleView(view);
     }
@@ -68,7 +68,7 @@ class App {
             this._router.navigate(newUrl + "?goon");
         }
 
-        if(this._currentView && !this._currentView.onLeave(goon)) {
+        if (this._currentView && !this._currentView.onLeave(goon)) {
             this._navAborted = true;
             return false;
         }

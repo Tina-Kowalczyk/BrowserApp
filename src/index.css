@@ -1,11 +1,11 @@
 /*Handy*/
-body{
+body {
     padding: 0;
     margin: 1.5vw;
     margin-top: 5em;
 }
 
-html{
+html {
     padding: 0;
     margin: 0;
     font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
@@ -15,32 +15,32 @@ html{
 }
 
 /*Tablets*/
-@media(min-width:700px){
-    html{
+@media(min-width:700px) {
+    html {
         font-size: 2vw;
     }
 
-    body{
+    body {
         margin: 1vw;
         margin-top: 3em;
     }
-
 }
 
 /*Laptop*/
-@media(min-width:1200px){
-    html{
+@media(min-width:1200px) {
+    html {
         font-size: 1vw;
     }
 
-    body{
+    body {
         margin: 2em;
         margin-top: 2em;
     }
 }
+
 #filterParams {
-	font: 14px arial;
-	background-color: #EFEFEF;
-	margin-bottom: 12px;
-	padding-left: 6px;
+    font: 14px arial;
+    background-color: #EFEFEF;
+    margin-bottom: 12px;
+    padding-left: 6px;
 }

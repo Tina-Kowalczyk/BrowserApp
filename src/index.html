@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Kalorienrechner</title>
-        <meta charset="utf-8" />
-        <script src="app.js"></script>
 
-        <link href="KalorienRechner.css" rel="stylesheet"/>
-        <script src="KalorienRechner.js"></script>
+<head>
+    <title>Kalorienrechner</title>
+    <meta charset="utf-8" />
+    <script src="app.js"></script>
 
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-    </head>
-    <body id="app">
-        <header>
-            <nav id="nav">
-                <a class="headera" href="/Gerichte" navigo>Gerichte</a>
-                <a class="headera" href="/Bilanz" navigo>Bilanz</a>
-                <a class="headera" href="/Kalorienbedarf" navigo>T&auml;glicher Kalorienbedarf</a>
-            </nav>
-        </header>
-        <main>
-            <section id="section_Gerichte">
-                <h1>Gerichte</h1>
-                <!--Filterleiste-->
-                <div id="Filter">
-                    <form id="filterParams">
+    <link href="KalorienRechner.css" rel="stylesheet" />
+    <script src="KalorienRechner.js"></script>
+
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body id="app">
+    <header>
+        <nav id="nav">
+            <a class="headera" href="/Gerichte" navigo>Gerichte</a>
+            <a class="headera" href="/Bilanz" navigo>Bilanz</a>
+            <a class="headera" href="/Kalorienbedarf" navigo>T&auml;glicher Kalorienbedarf</a>
+        </nav>
+    </header>
+    <main>
+        <section id="section_Gerichte">
+            <h1>Gerichte</h1>
+            <!--Filterleiste-->
+            <div id="Filter">
+                <form id="filterParams">
                     <a>
                         Filter:
                     </a>
                     <!--Textfelder -> Filter-->
                     <input type="text" placeholder="Gericht" id="filter_gericht" class="textfeld_filter" />
-                    <input type="text" placeholder="Kalorien" id="filter_kalorien" class="textfeld_filter"/>
+                    <input type="text" placeholder="Kalorien" id="filter_kalorien" class="textfeld_filter" />
 
                     <!--Such-Button -> Filter-->
                     <button type="button" class="buttonFilter" id="button_filter">Suchen</button>
-                    </form>
-                </div>
+                </form>
+            </div>
 
-                <!--Neues Gericht hinzufügen-->
-                <div id="hinzufügen">
-                    <h2>Bitte geben Sie die Daten des neuen Gerichts ein!</h2>
-                    <br>
+            <!--Neues Gericht hinzufügen-->
+            <div id="hinzufügen">
+                <h2>Bitte geben Sie die Daten des neuen Gerichts ein!</h2>
+                <br>
 
-                </div>
-                <div>
+            </div>
+            <div>
 
-                    <div id="buttons" style="text-align: center; border: 1px solid transparent">
+                <div id="buttons" style="text-align: center; border: 1px solid transparent">
                     <button id="button-insert-row" class="btn-add" type="button">Neues Gericht hinzufügen</button>
                     <button id="button-delete-rows" class="btn-delete" type="button">Markiertes Gericht löschen</button>
                     <button id="button-discard-changes" class="btn-discard" type="button">Änderungen verwerfen</button>
                     <button id="button-save-changes" class="btn-save" type="button">Änderungen sichern</button>
                 </div>
-            </section>
+        </section>
 
 
-            <section id="section_KalorienRechner">
-                <div>
-                    <h1>Tagesbedarfsrechner</h1>
+        <section id="section_KalorienRechner">
+            <div>
+                <h1>Tagesbedarfsrechner</h1>
 
-                    <p>Mit diesem Online-Rechner können Sie ihren Tagesbedarf an Kalorien berechnen.</p>
+                <p>Mit diesem Online-Rechner können Sie ihren Tagesbedarf an Kalorien berechnen.</p>
 
-                    <form id="filterParams" align=center>
+                <form id="filterParams" align=center>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required minlength="1" size="10">
-                        <br>
+                    <br>
 
                     <label for="alter">Alter in Jahren:</label>
-                    <input type="number" id="alter" name="alter" required min="0" max="110" >
-                        <br />
+                    <input type="number" id="alter" name="alter" required min="0" max="110">
+                    <br />
 
                     <label for="gewicht">Gewicht in kg:</label>
                     <input type="number" id="gewicht" name="gewicht" required min="0" max="300" />
@@ -78,37 +80,37 @@
 
                     <br />
 
-                    <input type="radio" name="geschlecht" id="männlich"  value="männlich">Männlich <br>
+                    <input type="radio" name="geschlecht" id="männlich" value="männlich">Männlich <br>
                     <input type="radio" name="geschlecht" id="weiblich" value="weiblich">Weiblich <br>
-                    </form>
+                </form>
 
-                    <form align=center>
+                <form align=center>
 
                     <div class="dropdown">
-                    <button id="aktivDrop" onclick="myFunction()" class="dropbtn">Aktivitätslevel auswählen</button>
-                    <div id="aktivButton" class="dropdown-content">
-                    <a id="wenig" onclick="myAktivFunction(this.innerHTML)" >wenig aktiv</a>
-                    <a id="leicht" onclick="myAktivFunction(this.innerHTML)" >leicht aktiv</a>
-                    <a id="moderat" onclick="myAktivFunction(this.innerHTML)" >moderat aktiv</a>
-                    <a id="sehr" onclick="myAktivFunction(this.innerHTML)" >sehr aktiv</a>
-                    <a id="extrem" onclick="myAktivFunction(this.innerHTML)" >extrem aktiv</a>
-                    </div>
+                        <button id="aktivDrop" onclick="myFunction()" class="dropbtn">Aktivitätslevel auswählen</button>
+                        <div id="aktivButton" class="dropdown-content">
+                            <a id="wenig" onclick="myAktivFunction(this.innerHTML)">wenig aktiv</a>
+                            <a id="leicht" onclick="myAktivFunction(this.innerHTML)">leicht aktiv</a>
+                            <a id="moderat" onclick="myAktivFunction(this.innerHTML)">moderat aktiv</a>
+                            <a id="sehr" onclick="myAktivFunction(this.innerHTML)">sehr aktiv</a>
+                            <a id="extrem" onclick="myAktivFunction(this.innerHTML)">extrem aktiv</a>
+                        </div>
                     </div>
 
                     <input type="button" onclick="berechnen()" id="berechnen" name="berechnen" value="Berechnen" />
-                    </form>
+                </form>
 
-                    <p id="ergebnis"></p>
-                    <p>
-                    wenig aktiv	kein oder wenig Training, überwiegend sitzende Tätigkeit<br>
-                    leicht aktiv	leichtes Training / Sport an 1-3 Tagen pro Woche<br>
-                    moderat aktiv	moderates Training / Sport an 3-5 Tagen pro Woche<br>
-                    sehr aktiv	anstrengendes Training / Sport an 6-7 Tagen pro Woche<br>
-                    extrem aktiv	anstrengendes tägliches Training / Sport, Leistungssport, harte körperliche Arbeit oder 2x tägliches Training
-                    </p>
-                </div>
-            </section>
-            <section id="section_Bilanz">
+                <p id="ergebnis"></p>
+                <p>
+                    wenig aktiv kein oder wenig Training, überwiegend sitzende Tätigkeit<br>
+                    leicht aktiv leichtes Training / Sport an 1-3 Tagen pro Woche<br>
+                    moderat aktiv moderates Training / Sport an 3-5 Tagen pro Woche<br>
+                    sehr aktiv anstrengendes Training / Sport an 6-7 Tagen pro Woche<br>
+                    extrem aktiv anstrengendes tägliches Training / Sport, Leistungssport, harte körperliche Arbeit oder 2x tägliches Training
+                </p>
+            </div>
+        </section>
+        <section id="section_Bilanz">
             <!--int GesamteKalorien = ergebnis - Bilanz.MahlzeitBerechnen(Wert);-->
             <div>
                 <h1>Bilanz</h1>
@@ -120,9 +122,10 @@
                 <p>Das Ergebnis zeigt Ihren Kalorien an</p>
 
                 <div id="buttons" style="text-align: center; border: 1px solid transparent">
-            </section>
-        </main>
-        <footer>
-        </footer>
-    </body>
+        </section>
+    </main>
+    <footer>
+    </footer>
+</body>
+
 </html>

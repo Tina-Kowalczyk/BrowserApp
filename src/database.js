@@ -6,7 +6,7 @@ import "firebase/firestore";
 
 
 class Database {
-    constructor(){
+    constructor() {
         firebase.initializeApp({
             apiKey: "AIzaSyBEBm35gLXpwIa0VZye6coFas_vWI2PzDY",
             authDomain: "browserapp-5dda9.firebaseapp.com",
@@ -17,50 +17,51 @@ class Database {
             appId: "1:44691335887:web:28704268e3d27391db65ba"
         });
         this._db = firebase.firestore();
-        this._gerichte=this._db.collection("gerichte");
+        this._gerichte = this._db.collection("gerichte");
     }
 
-    createDemoData(){
-        let gerichte =  this.selectAllGerichte();
+    createDemoData() {
+        let gerichte = this.selectAllGerichte();
 
         //Festlegen von einigen Demodaten, wenn noch keine vorhanden sind
-        if(gerichte.length < 3){
+        if (gerichte.length < 3) {
             this.saveGerichte([{
-                "id" : "Pizza",
-                "Kalorien": "300",
-            },
-        {
-            "id" : "Gummibärchen",
-            "Kalorien": "300"
-        },
-    {
-        "id" : "Fruchtgummis",
-        "Kalorien": "300"
-    },
-{
-    "id" : "Müsli",
-    "Kalorien": "300"
-}]);
+                    "id": "Pizza",
+                    "Kalorien": "300",
+                },
+                {
+                    "id": "Gummibärchen",
+                    "Kalorien": "300"
+                },
+                {
+                    "id": "Fruchtgummis",
+                    "Kalorien": "300"
+                },
+                {
+                    "id": "Müsli",
+                    "Kalorien": "300"
+                }
+            ]);
         }
     }
 
     //Aufrufen aller vorhandenen Gerichte
-    selectAllGerichte(){
+    selectAllGerichte() {
         return this._db.collection("gerichte").get();
     }
 
     //Aufrufen aller Gerichte, sortiert nach dem übergebenen Kriterium (z.B. Name, Vorname, etc)
-    selectAllGerichteByOrder(order){
+    selectAllGerichteByOrder(order) {
         return this._db.collection("gerichte").orderBy(order).get();
     }
 
-    selectAllGerichteByOrderBackwards(order){
+    selectAllGerichteByOrderBackwards(order) {
         return this._db.collection("gerichte").orderBy(order, "desc").get();
     }
 
     //Gibt einen Gericht anhand seiner ID zurück
     //Die ID ist dabei die Mitarbeiter-ID
-    selectGerichtById(id){
+    selectGerichtById(id) {
         return this._gerichte.doc(id).get();
     }
 
@@ -68,12 +69,12 @@ class Database {
     Der Aufbau sollte wie folgt aussehen:
     "Name" : "Gericht",
     "Vorname": "Kalorien"*/
-    saveGericht(gericht){
+    saveGericht(gericht) {
         this._gerichte.doc(gericht.id).set(gericht);
     }
 
     //Gericht löschen, anhand der Id
-    deleteGerichtById(id){
+    deleteGerichtById(id) {
         return this._gerichte.doc(id).delete();
     }
 
@@ -91,7 +92,7 @@ class Database {
     }
 
     //löschen mehrerer Gerichte anhand der Mitarbeiter-Id
-    deleteGerichteById(ids){
+    deleteGerichteById(ids) {
         let batch = this._db.batch();
 
         ids.forEach(id => {

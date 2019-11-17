@@ -4,18 +4,18 @@ import Index from "./Index.js";
 import App from "./app.js";
 
 
-let _app="";
+let _app = "";
 let _db = "";
 
-class Gerichte{
-    constructor(app){
+class Gerichte {
+    constructor(app) {
         this._app = _app;
         _app = this._app;
         _db = app._db;
 
     }
 
-    onShow(){
+    onShow() {
         console.log(document.querySelector("#section_Gerichte"));
         let section = document.querySelector("#section_Gerichte").cloneNode(true);
 
@@ -24,31 +24,32 @@ class Gerichte{
             main: section.querySelectorAll("section > *"),
         };
     };
-    onLoad(){
+    onLoad() {
         //Test
         test();
-        suchen ();
-        einfügen (gericht, kcal);
+        suchen();
+        einfügen(gericht, kcal);
 
-      //EventListener von Suchen-Button
-      document.getElementById("button_filter").addEventListener("click", suchen);
+        //EventListener von Suchen-Button
+        document.getElementById("button_filter").addEventListener("click", suchen);
 
-      //EventListener für Filter-Felder
-      document.getElementById("filter_gericht").addEventListener("keyup", keyType);
-      document.getElementById("filter_kalorien").addEventListener("keyup", keyType);
-  }
-  onLeave(goon){
-    return true;
+        //EventListener für Filter-Felder
+        document.getElementById("filter_gericht").addEventListener("keyup", keyType);
+        document.getElementById("filter_kalorien").addEventListener("keyup", keyType);
+    }
+    onLeave(goon) {
+        return true;
+    }
 }
-}
 
-function test(){
+function test() {
     _db.saveGericht({
-        "id" : "Pizza",
+        "id": "Pizza",
         "Kalorien": "300",
     });
 }
-function suchen (){
+
+function suchen() {
     //Tabelle leeren
     //dient dazu, dass nur die gefundenen Elemente angezeigt werden
     deleteTable("Tabellenhead");
@@ -59,13 +60,13 @@ function suchen (){
     let kcal = document.getElementById("filter_vorname").value.toLowerCase();
 
     //Überprüfen, ob ein Filter aktiviert ist. Wenn nicht wird die komplette Tabelle angezeigt
-    if(gericht=="" && kcal==""){
+    if (gericht == "" && kcal == "") {
         anzeigen();
     } else {
         //Aufrufen aller Gerichte rückwärts
-        _db.selectAllGerichteByOrderBackwards("Gericht").then(function (querySnapshot) {
+        _db.selectAllGerichteByOrderBackwards("Gericht").then(function(querySnapshot) {
             //jedes Gericht überprüfen
-            querySnapshot.forEach(function(doc){
+            querySnapshot.forEach(function(doc) {
                 //wenn einer der Filter im Gericht beinhaltet wird, wird dieser der Tabelle hinzugefügt
 
                 //Flag, der anzeigt, ob ein Filter auf das Gericht zutrifft
@@ -73,28 +74,28 @@ function suchen (){
                 let kalorienflag = false;
 
                 //Überprüfen, ob etwas in den Feldern steht
-                if(gericht!==""){
+                if (gericht !== "") {
                     //überprüfen, ob das, was im Feld steht, im Gericht vorhanden ist
                     //zu Verbesserung der Suche werden die Strings in Kleinbuchstaben verwandelt
                     //Der Vorgang wird in allen folgenden if-Schleifen wiederholt
-                    if(doc.data().Gericht.toLowerCase().indexOf(gericht)>=0){
+                    if (doc.data().Gericht.toLowerCase().indexOf(gericht) >= 0) {
                         gerichtflag = true;
                     }
                 } else {
                     gerichtflag = true;
                 }
 
-                if(kcal!==""){
-                    if(doc.data().Kalorien.toLowerCase().indexOf(kcal)>=0){
+                if (kcal !== "") {
+                    if (doc.data().Kalorien.toLowerCase().indexOf(kcal) >= 0) {
                         kalorienflag = true;
                     }
-                } else{
+                } else {
                     gerichtflag = true;
                 }
 
 
                 //Wenn mindestens eine der Bedingungen zutrifft, wird das Gericht der Tabelle hinzugefügt
-                if(gerichtflag && kalorienflag){
+                if (gerichtflag && kalorienflag) {
                     //Speichern der Daten in Variablen
                     let gericht = doc.data().Gericht;
                     let kalorien = doc.data().Kalorien;
@@ -107,8 +108,8 @@ function suchen (){
     }
 }
 
-    //Übergebenenes Gericht der Tabelle an erster Stelle hinzufügen
-function einfügen (gericht, kcal){
+//Übergebenenes Gericht der Tabelle an erster Stelle hinzufügen
+function einfügen(gericht, kcal) {
     //Einfügen des Gerichts
     //Einfügen von neuer Zeile an erster Stelle in der Tabelle //
     let neueTr = document.getElementById("Tabellenhead").insertRow(2);
