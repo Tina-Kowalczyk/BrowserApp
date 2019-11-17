@@ -27,6 +27,9 @@ class Gerichte{
     onLoad(){
         //Test
         test();
+        suchen ();
+        einfügen (gericht, kcal);
+
       //EventListener von Suchen-Button
       //document.getElementById("button_filter").addEventListener("click", suchen);
 

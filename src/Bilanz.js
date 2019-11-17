@@ -1,3 +1,8 @@
+
+import App from "./app.js";
+import Database from "./database.js";
+import KalorienRechner from "./KalorienRechner.js";
+
 class Bilanz{
     constructor(app){
         this._app = _app;
@@ -5,6 +10,7 @@ class Bilanz{
         _db = app._db;
 
     }
+
 
     onShow(){
         let section = document.querySelector("#section_Bilanz").cloneNode(true);
@@ -24,6 +30,13 @@ class Bilanz{
   }
   onLeave(goon){
     return true;
+}
+MahlzeitBerechnen(Mahlzeiten){
+  let Gesamt = 0;
+  for( i = 0; i >= Mahzeiten.length; i++){
+    Gesamt = Gesamt + Mahlzeit [i];
+  }
+return Gesamt;
 }
 }
 
