@@ -8,12 +8,6 @@ Der Kalorienrechner soll Menschen dabei unterstützen, einen Überblick über ih
 Der Kalorienrechner ist eine Browser App, die ohne einen Server im Hintergrund komplett im Browser läuft. Es handelt sich dabei um eine so genannte Single Page App, da die App nur einmal durch Aufrufen der HTML-Datei gestartet und dann bis zum Verlassen der App nicht wieder neugeladen wird.
 
 
-Kommentar
-------------------------------
-
-Durch diverse Umstellungen in der CSS, sowie einer zentralen HTML Datei (aus Erkenntnissen anderer Kurse), wenige Tage, bzw. Stunden vor der Abgabe, konnten wir leider nicht mehr die gewünschten Ergebnisse erzielen. Diese wären zum Beispiel die Einstellung von einer Tabelle auf der Kalorienbedarf Seite, die wieder leider nicht mehr rechtzeitig fertigstellen konnten (dies lag nicht an der Zeit, sondern an uns noch unerfindlichen Gründen). Wir hoffen Sie haben Verständnis dafür oder könnten uns diesen Schritt noch erklären…
-
-
 Verwendete Technologien
 ------------------------------
 Die App nutzt den Node Package Manager npm als Paketverwaltung. Auf diese Weise werden der Application Bundler ParcelJS sowie eine Hand voll externe Bibliotheken für die Anwendung installiert.
