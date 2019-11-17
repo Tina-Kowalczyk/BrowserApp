@@ -1,0 +1,197 @@
+.tabulator {
+    position: relative;
+    border-bottom: 5px solid #4CAF50;
+    background-color: #fff;
+    font-size: 14px;
+    text-align: left;
+    overflow: hidden;
+    transform: translatez(0);
+    font-family: arial;
+}
+
+.tabulator .tabulator-header {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    border-bottom: 4px solid #4CAF50;
+    background-color: #222;
+    color: #fff;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.tabulator .tabulator-header .tabulator-col {
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    border-right: 1px solid #aaa;
+    background-color: #333;
+    text-align: left;
+    overflow: hidden;
+}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content {
+    position: relative;
+    padding: 8px;
+}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content .tabulator-arrow {
+    display: inline-block;
+    position: absolute;
+    top: 14px;
+    right: 8px;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #bbb;
+}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter textarea {
+    height: auto !important;
+}
+
+.tabulator .tabulator-header .tabulator-col .tabulator-header-filter svg {
+    margin-top: 3px;
+}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort="none"] .tabulator-col-content .tabulator-arrow {
+    border-bottom: none;
+    border-top: 6px solid #4CAF50;
+    /* the arrow colour */
+}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort="asc"] .tabulator-col-content .tabulator-arrow {
+    border-top: none;
+    border-bottom: 6px solid #4CAF50;
+    /* the arrow colour */
+}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable[aria-sort="desc"] .tabulator-col-content .tabulator-arrow {
+    border-bottom: none;
+    border-top: 6px solid #4CAF50;
+    /* the arrow colour */
+}
+
+.tabulator .tabulator-row {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 22px;
+    background-color: #fff;
+    white-space: nowrap;
+}
+
+.tabulator .tabulator-row.tabulator-row-even {
+    background-color: #EFEFEF;
+}
+
+.tabulator .tabulator-row.tabulator-selectable:hover {
+    background-color: #bbb;
+    cursor: pointer;
+}
+
+.tabulator .tabulator-row.tabulator-selected {
+    background-color: #4CAF50;
+}
+
+.tabulator .tabulator-row.tabulator-selected:hover {
+    background-color: ##4CAF50;
+    cursor: pointer;
+}
+
+.tabulator .tabulator-row .tabulator-cell {
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    padding: 6px;
+    border-right: 1px solid #aaa;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tabulator .tabulator-row .tabulator-cell.tabulator-editing {
+    border: 1px solid #4CAF50;
+    padding: 0;
+}
+
+.tabulator .tabulator-row .tabulator-cell.tabulator-editing input, .tabulator .tabulator-row .tabulator-cell.tabulator-editing select {
+    border: 1px;
+    background: transparent;
+}
+
+/* Umrandung des Suchfelds (Filter) */
+.fieldIn {
+    border: solid;
+    border-width: 2px;
+    border-color: #4CAF50;
+    margin: 6px 12px 6px 1px;
+}
+
+.btn-add {
+    background: #4CAF50;
+    background: linear-gradient(#4CAF50, #2d6730);
+    /* das grün von überall und ein etwas dunkleres für den Farbverlauf */
+    border: solid;
+    border-width: 1px;
+    border-color: #000;
+    color: white;
+    font-weight: bold;
+    padding: 12px 16px;
+    /* total height is 8+8+1+1+14=32*/
+    text-align: center;
+    margin-left: 4px;
+}
+
+.btn-save {
+    background: #4CAF50;
+    background: linear-gradient(#4CAF50, #2d6730);
+    border: solid;
+    border-width: 1px;
+    border-color: #000;
+    color: white;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-align: center;
+    margin-left: 4px;
+}
+
+.btn-discard {
+    background: #4CAF50;
+    background: linear-gradient(#4CAF50, #2d6730);
+    border: solid;
+    border-width: 1px;
+    border-color: #000;
+    color: white;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-align: center;
+    margin-left: 4px;
+}
+
+.btn-delete {
+    background: #4CAF50;
+    background: linear-gradient(#4CAF50, #2d6730);
+    border: solid;
+    border-width: 1px;
+    border-color: #000;
+    color: white;
+    font-weight: bold;
+    padding: 12px 16px;
+    text-align: center;
+    margin-left: 4px;
+}
+#filterParams {
+	font: 14px arial;
+	background-color: #EFEFEF;
+	margin-bottom: 12px;
+	padding-left: 6px;
+}
+#filterInput {
+	background-position: 0px -1px;
+	background-repeat: no-repeat;
+	padding: 7px 0px 7px 30px;
+}
+
+#fieldSelect {
+	padding: 7px 0px 7px 0px;
+}
