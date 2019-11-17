@@ -1,3 +1,8 @@
+import stylesheet from "./Bilanz.css";
+import App from "./app.js";
+import Database from "./database.js";
+import KalorienRechner from "./KalorienRechner.js";
+
 class Bilanz{
     constructor(app){
         this._app = _app;
@@ -25,6 +30,12 @@ class Bilanz{
   onLeave(goon){
     return true;
 }
+    //MahlzeitBerechnen(Mahlzeiten[]){
+    //var Gesamt = 0;
+    //for(int i = 0; i >= Mahlzeiten.length; i++){
+    //Gesamt = Gesamt + Mahlzeit [i];
+    //}
+//return Gesamt;
+//}
 }
-
 export default Bilanz;

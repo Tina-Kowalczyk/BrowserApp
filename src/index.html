@@ -107,7 +107,7 @@
                         <p id="ergebnis"></p>
 
                     <p>
-                        wenig aktiv	kein oder wenig Training, überwiegend sitzende Tätigkeit<br>
+                    wenig aktiv	kein oder wenig Training, überwiegend sitzende Tätigkeit<br>
                     leicht aktiv	leichtes Training / Sport an 1-3 Tagen pro Woche<br>
                     moderat aktiv	moderates Training / Sport an 3-5 Tagen pro Woche<br>
                     sehr aktiv	anstrengendes Training / Sport an 6-7 Tagen pro Woche<br>
@@ -116,7 +116,19 @@
                 </div>
             </section>
             <section id="section_Bilanz">
+            <!--int GesamteKalorien = ergebnis - Bilanz.MahlzeitBerechnen(Wert);-->
+            <div>
+                <h1>Bilanz</h1>
 
+                <p>Hier können Sie die Bilanz Ihres aktuellen Tagesbedarfs anschauen:</p>
+
+                <input type="text" placeholder=GesamteKalorien class="textfeld_phase" required="">
+
+                <p>Das Ergebnis zeigt Ihren Kalorien an</p>
+
+                <div id="buttons" style="text-align: center; border: 1px solid transparent">
+                <div id="button"><a href="Gerichte.js">Gerichte</a></div>
+                <div id="button"><a href="KalorienRechner.js">Kalorienrechner</a></div>
             </section>
         </main>
         <footer>
