@@ -1,32 +1,37 @@
 {
-  "name": "browserapp",
-  "version": "1.0.0",
-  "description": "Kalorienzähler",
+  "name": "WebProg",
+  "version": "0.1.0",
+  "description": "Eine Beispielanwendung für die Vorlesung Webentwicklung",
   "main": "index.js",
   "scripts": {
     "clean": "node scripts/clean.js",
-    "build": "npm run clean && parcel build src/*.html --public-url . --detailed-report --experimental-scope-hoisting",
-    "watch": "npm run clean && parcel watch src/*.html --public-url . --detailed-report --experimental-scope-hoisting",
+    "build": "npm run clean && parcel build src/*.html --public-url ./ --detailed-report --experimental-scope-hoisting",
+    "watch": "npm run clean && parcel watch src/*.html --public-url ./ --detailed-report --experimental-scope-hoisting",
     "start": "parcel src/index.html --open"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Tina-Kowalczyk/BrowserApp.git"
+    "url": "git+https://github.com/Tina-Kowalczyk/WebProg.git"
   },
-  "keywords": [
-    "Kalorienzähler"
-  ],
-  "author": "Tina Kowalczyk, Christoph Geib, Nicolas Wild, Bruno Schilling",
-  "license": "ISC",
+  "keywords": [],
+  "author": "Tina Kowalczyk",
+  "license": "CC-BY-4.0",
   "bugs": {
-    "url": "https://github.com/Tina-Kowalczyk/BrowserApp/issues"
+    "url": "https://github.com/Tina-Kowalczyk/WebProg.git/issues"
   },
-  "homepage": "https://github.com/Tina-Kowalczyk/BrowserApp#readme",
+  "homepage": "https://github.com/Tina-Kowalczyk/WebProg.git#readme",
   "devDependencies": {
+    "firebase": "^6.6.1",
+    "navigo": "^7.1.2",
     "parcel-bundler": "^1.12.4",
     "shelljs": "^0.8.3"
   },
   "dependencies": {
-    "firebase": "^7.4.0"
+    "firebase-admin": "^8.5.0",
+    "firebase-tools": "^7.6.1",
+    "mysql": "^2.17.1",
+    "npm": "^6.12.0",
+    "primeicons": "^2.0.0",
+    "primeng": "^8.0.4"
   }
 }
