@@ -4,8 +4,7 @@ import Database from "./database.js";
 
 let _app="";
 let _db ="";
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
+
 class KalorienbedarfPage {
     constructor(app){
         this._app = _app;
@@ -23,16 +22,17 @@ class KalorienbedarfPage {
             main: section.querySelectorAll("section > *"),
         };
     };
-    onLoad(){
-        myFunction();
-        myAktivFunction();
-        berechnen();
-      //EventListener von Suchen-Button
-      //document.getElementById("button_filter").addEventListener("click", suchen);
 
-      //EventListener für Filter-Felder
-      //document.getElementById("filter_gericht").addEventListener("keyup", keyType);
-      //document.getElementById("filter_kalorien").addEventListener("keyup", keyType);
+    onLoad(){
+        let gewicht= document.getElementById("gewicht").value;
+        let groesse= document.getElementById("groesse").value;
+        let alter= document.getElementById("alter").value;
+        let geschlecht;
+        let aktivitaet;
+         document.getElementById("aktivDrop").addEventListener("click", myFunction);
+         document.getElementById("berechnen").addEventListener("click", berechnen);
+
+
   }
   onLeave(goon){
     return true;
@@ -43,7 +43,7 @@ function myFunction() {
   document.getElementById("aktivButton").classList.toggle("show");
 }
 
-// Close the dropdown menu if the user clicks outside of it
+
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -63,12 +63,6 @@ window.onclick = function(event) {
 
 function berechnen(){
 
-    let gewicht= document.getElementById("gewicht").value;
-    let groesse= document.getElementById("groesse").value;
-    let alter= document.getElementById("alter").value;
-    let geschlecht;
-    let aktivitaet;
-
     if (document.getElementById("männlich").checked==true){
         geschlecht=5;
     }
@@ -78,8 +72,6 @@ function berechnen(){
     else {
         geschlecht=0;
     }
-
-
 
     switch (document.getElementById("aktivDrop").innerHTML) {
     case "wenig aktiv":

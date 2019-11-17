@@ -31,11 +31,11 @@ class Gerichte{
         einfügen (gericht, kcal);
 
       //EventListener von Suchen-Button
-      //document.getElementById("button_filter").addEventListener("click", suchen);
+      document.getElementById("button_filter").addEventListener("click", suchen);
 
       //EventListener für Filter-Felder
-      //document.getElementById("filter_gericht").addEventListener("keyup", keyType);
-      //document.getElementById("filter_kalorien").addEventListener("keyup", keyType);
+      document.getElementById("filter_gericht").addEventListener("keyup", keyType);
+      document.getElementById("filter_kalorien").addEventListener("keyup", keyType);
   }
   onLeave(goon){
     return true;
