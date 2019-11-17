@@ -3,8 +3,15 @@ Kalorienrechner
 
 Kurzbeschreibung
 ------------------------------
+Der Kalorienrechner soll Menschen dabei unterstützen, einen Überblick über ihren Kalorienbedarf zu bekommen. Durch Eingabe, Speicherung und Ansehen der Gerichte und deren Kalorien soll jeder einen Überblick über die am Tag zu sich genommen Kalorien haben. Alle gespeicherten Daten lassen sich im Nachhinein bearbeiten, löschen und erneut abspeichern. Um mit diesem Wissen etwas anfangen zu können, ist es möglich seinen täglichen Kalorienbedarf zu ermitteln.
 
-text test
+Der Kalorienrechner ist eine Browser App, die ohne einen Server im Hintergrund komplett im Browser läuft. Es handelt sich dabei um eine so genannte Single Page App, da die App nur einmal durch Aufrufen der HTML-Datei gestartet und dann bis zum Verlassen der App nicht wieder neugeladen wird.
+
+
+Kommentar
+------------------------------
+
+Durch diverse Umstellungen in der CSS, sowie einer zentralen HTML Datei (aus Erkenntnissen anderer Kurse), wenige Tage, bzw. Stunden vor der Abgabe, konnten wir leider nicht mehr die gewünschten Ergebnisse erzielen. Diese wären zum Beispiel die Einstellung von einer Tabelle auf der Kalorienbedarf Seite, die wieder leider nicht mehr rechtzeitig fertigstellen konnten (dies lag nicht an der Zeit, sondern an uns noch unerfindlichen Gründen). Wir hoffen Sie haben Verständnis dafür oder könnten uns diesen Schritt noch erklären…
 
 
 Verwendete Technologien
